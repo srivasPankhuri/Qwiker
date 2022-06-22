@@ -29,6 +29,9 @@ app.use(express.json());
 
 
 // Route Middlewares
+app.get('/',(req,res)=>{
+    res.send('hello');
+})
 app.use('/api/user',authRoute);
 app.use('/api/posts', postRoute);
 
