@@ -1,5 +1,5 @@
 const express= require('express');
-const port=process.env.PORT;
+const port=process.env.PORT||80;
 const app=express();
 const dotenv=require('dotenv');
 const mongoose= require('mongoose');
@@ -11,24 +11,18 @@ const postRoute= require('./routes/posts');
 dotenv.config();
 
 //connect to DB
-// mongoose.connect(process.env.DB_CONNECT,
-// {
-//     useNewUrlParser: true
-//     // useUnifiedTopology: true,
-//     // useCreateIndex: true,
-//     // useFindAndModify: false,
-// },
-// ()=>{
-//     console.log("Connected to Database");
-// });
+mongoose.connect(process.env.DB_connect,
+{
+    useNewUrlParser: true
+    // useUnifiedTopology: true,
+    // useCreateIndex: true,
+    // useFindAndModify: false,
+},
+()=>{
+    console.log("Connected to Database");
+});
 
-const DATABASE_URL=process.env.DB_connect;
-    return mongoose.connect(DATABASE_URL).then((success)=>{
-        console.log("Database connected Successfully");
-    }).catch((error)=>{
-        console.log("Database not connected");
-        console.log(error);
-    })
+
 
 
 
