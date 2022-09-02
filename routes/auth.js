@@ -4,7 +4,9 @@ const jwt= require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
 const {registerValidation,loginValidation}=require('../validation');
 
-
+//add these 2 lines to make sure the parsing functionality is passed on to access body
+router.use(require('express').json());
+router.use(require('express').urlencoded({ extended: true }));
 
 
 
@@ -56,7 +58,7 @@ router.post('/login',async(req,res)=>{
 
     //Create and assign a token
     const token=jwt.sign({_id:user._id},process.env.TOKEN_SECRET);
-    res.header('auth-token',token).send(token);
+    res.json({token});
 
     // res.send('Logged In');
 })
