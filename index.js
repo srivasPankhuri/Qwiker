@@ -31,14 +31,11 @@ mongoose.connect(process.env.DB_connect,
     
     
 //Import Routes
-const authRoute=require('./routes/auth');
-
-const postRoute= require('./routes/posts');
+const dictionary=require("./routes/index.js");
 // Route Middlewares
 app.get('/',(req,res)=>{
     res.send('hello');
 })
-app.use('/api/user',authRoute);
-app.use('/api/posts', postRoute);
+app.use("/api",dictionary);
 
 app.listen(port,()=> console.log("Server is up and running"));
