@@ -3,12 +3,17 @@ const mongoose=require('mongoose');
 const userSchema= new mongoose.Schema({
     name:{
         type:String,
-        required:true,
+        required:false,// to be made compulsory on frontend
     },
     email:{
         type:String,
         required:true,
         max:255
+    },
+    username:{
+        type:String,
+        required:false,
+        unique:true
     },
     password:{
         type:String,
@@ -19,6 +24,14 @@ const userSchema= new mongoose.Schema({
     date:{
         type:Date,
         default:Date.now
+    },
+    imageUrl:{
+        type:String,
+        required:false
+    },
+    about:{
+        type:String,
+        required:false
     }
 })
 
