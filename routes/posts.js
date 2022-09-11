@@ -7,6 +7,10 @@ const Post=require('../model/Posts');
 router.use(require('express').json());
 router.use(require('express').urlencoded({ extended: true }));
 
+router.get("/",(req,res)=>{
+    res.send("post route");
+})
+
 
 router.post('/createpost',verify,(req,res)=>{
     const{title,body}=req.body
@@ -18,7 +22,7 @@ router.post('/createpost',verify,(req,res)=>{
     const post=new Post({
         title,
         body,
-        postedBy:req.user
+        postedBy:req.user.id
     })
     post.save().then(result=>{
         res.json({post:result})
