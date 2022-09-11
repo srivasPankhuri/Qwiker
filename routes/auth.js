@@ -63,5 +63,18 @@ router.post('/login',async(req,res)=>{
     // res.send('Logged In');
 })
 
+// logout
+
+router.post("/logout", function (req, res) {
+    const authHeader = req.headers["authorization"];
+    jwt.sign(authHeader, "", { expiresIn: 1 } , (logout, err) => {
+    if (logout) {
+    res.status(200).send({success:true,msg : 'You have been Logged Out' });
+    } else {
+    res.status(400).send({success:false,msg:'Error'});
+    }
+    });
+    });
+
 
 module.exports=router;
