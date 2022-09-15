@@ -15,17 +15,4 @@ router.use("/auth",authRoute);
 router.use("/posts",postRoute);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports=router;
