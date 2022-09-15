@@ -42,7 +42,7 @@ router.get("/myprofile",verify,async (req,res)=>{
         }
 });
 // update user profile (test)
-router.patch("/myprofile",verify,upload.single('imageUrl'), async(req,res)=>{
+router.post("/myprofile",verify,upload.single('imageUrl'), async(req,res)=>{
     // update user profile here
     // const salt=await bcrypt.genSalt(10);
     // const hashedPass=await bcrypt.hash(req.body.password,salt);
