@@ -32,7 +32,7 @@ router.get("/showAllPosts",verify,async(req,res)=>{
     try{
         id=await req.user._id; // getting id form the jwt encryption
         
-       const post=await Post.find({}).populate({path:"postedBy",model:"User"});
+       const post=await Post.find({}).populate({path:"postedBy", model:"User", select:"name email username date imageUrl about"});
        if(!post){
            res.status(200).json({ success: false, message: "post not found" });
        }else{
