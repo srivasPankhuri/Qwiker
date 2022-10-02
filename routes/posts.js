@@ -49,7 +49,7 @@ router.get("/showAllPosts",verify,async(req,res)=>{
 })
 
 // create post by user
-router.post('/createpost',verify,upload.single('photo'),(req,res)=>{
+router.post('/createpost',verify,upload.single('photo'),async(req,res)=>{
     // const{title,body}=req.body
     
     // if(!title||!body){
@@ -57,11 +57,16 @@ router.post('/createpost',verify,upload.single('photo'),(req,res)=>{
     // }
     // console.log(req.user)
     // res.send("ok")
+    
+    const user= await User.findById(req.user._id);
+    
     const post=new Post({
         title:req.body.title,
         body:req.body.body,
         photo:req.file.path,
-        postedBy:req.user._id
+        postedBy:req.user._id,
+        username:req.body.username,
+        postType:req.body.postType
     })
     post.save().then(result=>{
         res.json({post:result})
