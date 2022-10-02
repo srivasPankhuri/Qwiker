@@ -17,7 +17,12 @@ const postSchema= new mongoose.Schema({
     postType:{
         type:String,
         enum:['text','image','video'],
-        default:'text'
+        default:'text',
+        required:true
+    },
+    username:{
+        type:String,
+        required:true
     },
     postedBy:{
         type:mongoose.Schema.Types.ObjectId,
