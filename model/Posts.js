@@ -14,6 +14,11 @@ const postSchema= new mongoose.Schema({
         type:String,
         default:"no photo"
     },
+    postType:{
+        type:String,
+        enum:['text','image','video'],
+        default:'text'
+    },
     postedBy:{
 //         type:ObjectId,
 //         ref:"User"
