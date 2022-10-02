@@ -15,8 +15,40 @@ const postSchema= new mongoose.Schema({
         default:"no photo"
     },
     postedBy:{
-        type:ObjectId,
-        ref:"User"
+//         type:ObjectId,
+//         ref:"User"
+        name:{
+            type:String,
+            required:false,//to me made compulsory on frontend
+        },
+        email:{
+            type:String,
+            required:false,
+            max:255
+        },
+        username:{
+            type:String,
+            required:false,
+            unique:true
+        },
+        password:{
+            type:string,
+            required:true,
+            max:1024,
+            min:6
+        },
+        date:{
+            type:date,
+            default:date.now
+        },
+        imageUrl:{
+            type:String,
+            required:false
+        },
+        about:{
+            type:String,
+            required:false
+        }
     }
 },{timestamps:true})
 
