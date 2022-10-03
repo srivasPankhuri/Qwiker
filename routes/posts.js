@@ -61,7 +61,7 @@ router.post('/createpost',verify,upload.single('photo'),async(req,res)=>{
     
     const user= await User.findById(req.user._id);
     var username;
-    if(user.username){ // if no username at the sign in account
+    if(user.username){ // if no username at the sign in time
         username=user.username
     }else{
         username=" ";
