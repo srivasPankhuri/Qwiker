@@ -20,6 +20,25 @@ const postSchema= new mongoose.Schema({
         default:'text',
         required:true
     },
+    likes:[{type:ObjectId,ref:"User"}],
+    comments:[{
+        text:String,
+        writer:{
+            type:ObjectId,
+            ref:'User'
+        },
+        postId:{
+            type:ObjectId,
+            ref:'Post'
+        },
+        responseTo:{
+            type:ObjectId,
+            ref:'User'
+        },
+        content:{
+            type:String
+        }
+    }],
     username:{
         type:String,
         required:true
