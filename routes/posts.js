@@ -95,5 +95,105 @@ router.get("/showMyPosts",verify,async(req,res)=>{
         }
 })
 
+// Like a post
+router.put('/like',verify,(req,res)=>{
+    Post.findByIdAndUpdate(req.body.postId,{
+        $push:{likes:req.user._id}
+    },{
+        new:true
+    }).populate("comments.writer","_id name")
+    .populate("postedBy","_id name")
+    .exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
+        }
+    })
+})
+
+//Unlike a post
+router.put('/unlike',verify,(req,res)=>{
+    Post.findByIdAndUpdate(req.body.postId,{
+        $pull:{likes:req.user._id}
+    },{
+        new:true
+    }).populate("comments.writer","_id name")
+    .populate("postedBy","_id name")
+    .exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
+        }
+    })
+})
+
+//Comment on a post
+router.put('/comment',verify,(req,res)=>{
+    const comment = {
+        text:req.body.text,
+        content: req.body.content,
+        writer: req.user._id,
+        postId: req.body.postId,
+        responseTo: req.body.responseTo
+    }
+    Post.findByIdAndUpdate(req.body.postId,{
+        $push:{comments:comment}
+    },{
+        new:true
+    })
+    .populate("comments.writer","_id name")
+    .populate("postedBy","_id name")
+    .exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            console.log(result);
+            res.json(result)
+        }
+    })
+})
+
+//Delete a post
+router.delete('/deletepost/:postId',verify,(req,res)=>{
+    Post.findOne({_id:req.params.postId})
+    .populate("postedBy","_id")
+    .exec((err,post)=>{
+        if(err || !post){
+            return res.status(422).json({error:err})
+        }
+        if(post.postedBy._id.toString() === req.user._id.toString()){
+              post.remove()
+              .then(result=>{
+                  res.json(result)
+              }).catch(err=>{
+                  console.log(err)
+              })
+        }
+    })
+})
+
+//Delete a comment
+router.delete('/comment',verify,(req,res)=>{
+    
+    Post.findByIdAndUpdate(req.body.postId,{
+        $pull:{comments:{_id:req.body.commentId}}
+    },{
+        new:true
+    })
+    .populate("comments.writer","_id name")
+    .populate("postedBy","_id name")
+    .exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+           // console.log(result);
+            res.json(result)
+        }
+    })
+})
+
+
 
 module.exports=router;
