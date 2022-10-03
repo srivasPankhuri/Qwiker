@@ -2,6 +2,7 @@ const router = require('express').Router();
 const verify=require('../verifyToken');
 const mongoose =require('mongoose')
 const Post=require('../model/Posts');
+const User = require('../model/User');
 // multer
 const multer  = require('multer')
 // disk storage for multer
