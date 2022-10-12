@@ -151,7 +151,7 @@ router.put('/comment',verify,(req,res)=>{
     },{
         new:true
     })
-    .populate("comments.writer","_id name")
+    .populate("comments.writer","_id username imageUrl")
     .populate("postedBy","_id name")
     .exec((err,result)=>{
         if(err){
