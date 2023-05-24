@@ -12,6 +12,13 @@ The Social Media App is a platform that aims to connect users, share moments, an
 <!-- - **Direct Messaging**: Users can send private messages to connect with friends, share content, or engage in conversations.
 - **Notifications**: Users receive notifications for activities related to their posts, such as likes, comments, and new followers. -->
 
+## Tech Stack
+
+- **Node.js**: The server-side of the Social Media App is built using Node.js, providing a scalable and efficient runtime environment.
+- **MongoDB**: The app utilizes MongoDB as the database to store and manage user profiles, posts, and other relevant data.
+- **Render**: The app is deployed and hosted on the Render platform, ensuring easy scalability and robust performance.
+
+
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/srivasPankhuri/Social-Media-App.git`
