@@ -6,15 +6,15 @@ The Social Media App is a platform that aims to connect users, share moments, an
 
 - **User Profiles**: Each user has a dedicated profile page where they can showcase their posts, bio, and followers/following lists.
 - **Photo and Video Sharing**: Users can upload and share photos and videos, applying filters and editing options to enhance their content.
-<!-- - **Stories**: Users can create temporary stories consisting of photos or videos with various interactive elements like stickers, text, and drawings. -->
 - **Likes and Comments**: Users can express their appreciation by liking posts and leaving comments to initiate discussions or provide feedback.
 - **Explore**: The Explore feature allows users to discover new content, trending posts, and explore different profiles and hashtags.
+<!-- - **Stories**: Users can create temporary stories consisting of photos or videos with various interactive elements like stickers, text, and drawings. -->
 <!-- - **Direct Messaging**: Users can send private messages to connect with friends, share content, or engage in conversations.
 - **Notifications**: Users receive notifications for activities related to their posts, such as likes, comments, and new followers. -->
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/social-media-app.git`
+1. Clone the repository: `git clone https://github.com/srivasPankhuri/Social-Media-App.git`
 2. Set up the necessary dependencies and environment according to the provided documentation.
 3. Configure the app settings, including database connection, authentication, and storage options.
 4. Build and run the application on your local development server.
